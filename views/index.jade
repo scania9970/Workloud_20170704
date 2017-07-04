@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        script(type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.min.js")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        title WORKLOUD    
+    body
+        div(class = "container")
+            div(class = "row")
+                    h2 &nbsp; WORKLOUD
+                    legend
+                div(class = "col-md-3")
+                    div(class = "login-box well")
+                        form(action = "/login" method="post")
+                            legend LOGIN
+                            div(class = "form-group")
+                                    label(for = 'id' ) ID  
+                                    br
+                                    input(type='text' name = 'id' placeholder='ID' id = 'id' value = id)
+                            div(class = "form-group")
+                                    label(for = 'password') PASSWORD  
+                                    br
+                                    input(type='password' name = 'password' placeholder='PASSWORD')
+                            legend        
+                            div(class = "form-group")
+                                    input(type='submit' value = 'LOGIN' class='btn btn-default btn-login-submit btn-block m-t-md')
+                        legend
+
+                        button(class='btn btn-default btn-block m-t-md' id = 'signUp' onclick = "location.href='/register'") Sign Up
+                div(class = "col-md-5" style="border:1px;") 
+                    h3 Welcome to WORKLOUD. I'm Sanghun. I developed this web program to increase programming level. It made by nodejs. It's good chance to improve my skills. I knew WORKLOUD existed already. But It will be recorded to my project experience. WORKLOUD is web program which manage the work list. You can upload lists that is work you finished. And Supervisor can comfirm through checkboxes. I think that WORKLOUD improve your work efficiency.  
+                    
+                    
+                

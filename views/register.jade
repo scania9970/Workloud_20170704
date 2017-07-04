@@ -1,0 +1,143 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        title
+        script(type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.min.js")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+
+        script(type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.js")
+        script.
+            function register(){
+                var id = $(".id").val();
+                var password = $(".password").val();
+                var username = $(".username").val();
+                var part = $(".part").val();
+                var position = $(".position").val();
+                var displayname = $(".displayname").val();
+                var email = $(".email").val();
+                var description = $(".description").val();
+                
+                if(!id){
+                    alert('id를 입력하세요');
+                }  
+                if(!password){
+                    alert('password를 입력하세요');
+                }  
+                if(!username){
+                    alert('username를 입력하세요');
+                }  
+                if(!part){
+                    alert('part를 입력하세요');
+                }  
+                if(!position){
+                    alert('position를 입력하세요');
+                }  
+                if(!displayname){
+                    alert('displayname를 입력하세요');
+                }  
+                if(!email){
+                    alert('email를 입력하세요');
+                }  
+                if(!description){
+                    alert('description를 입력하세요');
+                }   if(id&&password&&username&&part&&position&&displayname&&email&&description){
+                        document.getElementById('registerForm').submit();
+                }
+            };
+            
+            function openIdCheck(){
+                window.name = 'register';
+                window.open('/idcheck','idcheck','width=430,height=200');
+            }
+    body
+        div(class = "container")
+            div(class = "row")
+                div(class = "page-header")
+                    h2 &nbsp; WORKLOUD
+                div(class = "col-md-3")
+                    form(action = "/register" method="post")
+                        p   
+                            label(for="id") ID
+                            br
+                            input(type='text' id = 'id' name = 'id' class='id' placeholder='ID' value=id)
+                            button(onclick= 'openIdCheck()') 중복확인
+                            legend
+                        p   
+                            label(for="password") PASSWORD
+                            br
+                            input(type='password' name = 'password' placeholder='PASSWORD' class='password')
+                            legend
+                        p
+                            label(for="username") USERNAME
+                            br
+                            input(type='text' name = 'username' placeholder='USERNAME' class='username')
+                            legend
+                            
+                        p
+                            label(for="part") PART
+                            br
+                            input(type='text' name = 'part' placeholder='PART' class='part')
+                            legend
+                        p
+                            label(for="position") POSITION
+                            br
+                            select(name = 'position' class = 'position')
+                                option(value = '') 직급선택
+                                option(value = '1') 1
+                                option(value = '2') 2
+                                option(value = '3') 3
+                                option(value = '4') 4
+                                option(value = '5') 5
+                                option(value = 'general') general
+                            //input(type='text' name = 'position' placeholder='POSITION')
+                            legend
+                        p
+                            label(for="displayname") DISPLAYNAME
+                            br
+                            input(type='text' name = 'displayname' placeholder='DISPLAYNAME' class='displayname')
+                            legend
+                        p
+                            label(for="email") EMAIL
+                            br
+                            input(type='text' name = 'email' placeholder='EMAIL-ADDRESS' class ='email')
+                            legend
+                        p
+                            label(for="mobile") MOBILE
+                            br
+                            input(type='text' name = 'mobile' placeholder='MOBILE' class ='mobile')
+                            legend
+                        p
+                            label(for="description") DESCRIPTION
+                            br
+                            input(type='textarea' name = 'description' placeholder='DESCRIPTION' class='description')
+                            legend
+                        p
+                            button(onclick='register()') submit
+                        legend    
+                        button(onclick="window.location.href='/'") To home
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

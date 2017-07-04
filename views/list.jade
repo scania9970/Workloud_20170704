@@ -1,0 +1,112 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        title Workloud
+        script(type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.min.js")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+        script.
+                $(document).on('click', '#isCompleted', function complete(){
+                    var $this = $(this);
+                    var isChecked = $this.is(":checked");
+                    
+                    if(isChecked === true){
+                        $this.addClass('checked');
+                        var lno = $('.checked').parent().siblings('#lno').text().trim();
+                        var data = { 
+                            'lno' : lno,
+                            'checked' : isChecked
+                        };
+                        $.ajax({
+                            type:'POST',
+                            url :'/completeProcess',
+                            data:data,
+                            success: function(data){
+                                if(data=== 'OK'){
+                                    $this.addClass('completed').removeClass('checked');
+                                }
+                            }
+                        })
+                    }
+                    if(isChecked === false){
+                        var lno = $this.parent().siblings('#lno').text().trim();
+                        console.log(lno);
+                        var data = {
+                            'lno' : lno,
+                            'checked' : isChecked
+                        };
+                        $.ajax({
+                            type:'POST',
+                            url:'/completeProcess',
+                            data:data,
+                            success: function(data){
+                                if(data === 'OK'){
+                                    $this.removeClass('completed');
+                                }
+                            }
+                        });
+                    }
+                })
+            
+    body
+        
+
+        div(class='container')
+            div(class = 'row')
+                div(class = 'col-md-4')
+                    h2 WORKLOUD
+                div(class = 'col-md-4 col-md-offset-4' align = 'right')
+                    h3=displayname + ' 님'
+                    a(href = '/logout') logout
+                legend
+                h1 &nbsp Todolist
+                div(align = "right")    
+                    button(type='button' onclick="location.href='/create'" class= 'btn btn-default') add
+                div(class='container')
+                    table(class='table')   
+                        tr
+                            th 번호
+                            th 제목
+                            th 작성자
+                            th 작성일
+                            th 파일첨부
+                            th 완료
+
+                        form(action ='/login' method = 'post' id = 'todolist')
+
+                            if(is===1)
+                                each list in lists
+                                    tr 
+                                        input(type='hidden' name = '_lno' id = '_lno')
+                                        td(name='lno' id='lno' width='10%')=list.lno
+                                        td(name=
+                                        'title' width='40%')
+                                            a(href='/showContent/'+list.lno)= list.title
+                                        td(name='writer' width='10%')= list.writer
+                                        td(name='date' width='15%')= list.date
+                                        td(name='fileflag' width='15%')= list.fileflag
+                                        td(width='10%')
+                                            if(list.completed === 1)
+                                                input(type='checkbox' id='isCompleted' name='isCompleted' checked)
+                                            else if(list.completed === 0)
+                                                input(type='checkbox' id='isCompleted' name='isCompleted')
+
+                            else if(is===0)
+                                each list in lists
+                                    tr
+                                        input(type='hidden' name = '_lno' id = '_lno')
+                                        td(name='lno' id='lno')= list.lno
+                                        td(name='title')
+                                            a(href='/showContent/'+list.lno)= list.title   
+                                        td(name='writer')= list.writer
+                                        td(name='date')= list.date
+                                        td(name='fileflag')= list.fileflag
+                                        td
+                                            if(list.completed === 1)
+                                                input(type='checkbox' id='isCompleted' name='isCompleted' disabled='true' checked)
+                                            else if(list.completed === 0)
+                                                input(type='checkbox' id='isCompleted' name='isCompleted' disabled='true')
+
+
+
+            
